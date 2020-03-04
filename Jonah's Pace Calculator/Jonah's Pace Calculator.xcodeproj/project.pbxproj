@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8CBEA345240F5B52006E2F4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA344240F5B52006E2F4A /* AppDelegate.swift */; };
+		8CBEA347240F5B52006E2F4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA346240F5B52006E2F4A /* SceneDelegate.swift */; };
+		8CBEA349240F5B52006E2F4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA348240F5B52006E2F4A /* ViewController.swift */; };
+		8CBEA34C240F5B52006E2F4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBEA34A240F5B52006E2F4A /* Main.storyboard */; };
+		8CBEA34E240F5B55006E2F4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBEA34D240F5B55006E2F4A /* Assets.xcassets */; };
+		8CBEA351240F5B55006E2F4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBEA34F240F5B55006E2F4A /* LaunchScreen.storyboard */; };
+		8CBEA35C240F5B55006E2F4A /* Jonah_s_Pace_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA35B240F5B55006E2F4A /* Jonah_s_Pace_CalculatorTests.swift */; };
+		8CBEA367240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA366240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CBEA358240F5B55006E2F4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CBEA339240F5B52006E2F4A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CBEA340240F5B52006E2F4A;
+			remoteInfo = "Jonah's Pace Calculator";
+		};
+		8CBEA363240F5B55006E2F4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CBEA339240F5B52006E2F4A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CBEA340240F5B52006E2F4A;
+			remoteInfo = "Jonah's Pace Calculator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8CBEA341240F5B52006E2F4A /* Jonah's Pace Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jonah's Pace Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CBEA344240F5B52006E2F4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8CBEA346240F5B52006E2F4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8CBEA348240F5B52006E2F4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8CBEA34B240F5B52006E2F4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8CBEA34D240F5B55006E2F4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8CBEA350240F5B55006E2F4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8CBEA352240F5B55006E2F4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CBEA357240F5B55006E2F4A /* Jonah's Pace CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jonah's Pace CalculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CBEA35B240F5B55006E2F4A /* Jonah_s_Pace_CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jonah_s_Pace_CalculatorTests.swift; sourceTree = "<group>"; };
+		8CBEA35D240F5B55006E2F4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CBEA362240F5B55006E2F4A /* Jonah's Pace CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jonah's Pace CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CBEA366240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jonah_s_Pace_CalculatorUITests.swift; sourceTree = "<group>"; };
+		8CBEA368240F5B55006E2F4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8CBEA33E240F5B52006E2F4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CBEA354240F5B55006E2F4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CBEA35F240F5B55006E2F4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8CBEA338240F5B52006E2F4A = {
+			isa = PBXGroup;
+			children = (
+				8CBEA343240F5B52006E2F4A /* Jonah's Pace Calculator */,
+				8CBEA35A240F5B55006E2F4A /* Jonah's Pace CalculatorTests */,
+				8CBEA365240F5B55006E2F4A /* Jonah's Pace CalculatorUITests */,
+				8CBEA342240F5B52006E2F4A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8CBEA342240F5B52006E2F4A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CBEA341240F5B52006E2F4A /* Jonah's Pace Calculator.app */,
+				8CBEA357240F5B55006E2F4A /* Jonah's Pace CalculatorTests.xctest */,
+				8CBEA362240F5B55006E2F4A /* Jonah's Pace CalculatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CBEA343240F5B52006E2F4A /* Jonah's Pace Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				8CBEA344240F5B52006E2F4A /* AppDelegate.swift */,
+				8CBEA346240F5B52006E2F4A /* SceneDelegate.swift */,
+				8CBEA348240F5B52006E2F4A /* ViewController.swift */,
+				8CBEA34A240F5B52006E2F4A /* Main.storyboard */,
+				8CBEA34D240F5B55006E2F4A /* Assets.xcassets */,
+				8CBEA34F240F5B55006E2F4A /* LaunchScreen.storyboard */,
+				8CBEA352240F5B55006E2F4A /* Info.plist */,
+			);
+			path = "Jonah's Pace Calculator";
+			sourceTree = "<group>";
+		};
+		8CBEA35A240F5B55006E2F4A /* Jonah's Pace CalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				8CBEA35B240F5B55006E2F4A /* Jonah_s_Pace_CalculatorTests.swift */,
+				8CBEA35D240F5B55006E2F4A /* Info.plist */,
+			);
+			path = "Jonah's Pace CalculatorTests";
+			sourceTree = "<group>";
+		};
+		8CBEA365240F5B55006E2F4A /* Jonah's Pace CalculatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8CBEA366240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift */,
+				8CBEA368240F5B55006E2F4A /* Info.plist */,
+			);
+			path = "Jonah's Pace CalculatorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8CBEA340240F5B52006E2F4A /* Jonah's Pace Calculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CBEA36B240F5B55006E2F4A /* Build configuration list for PBXNativeTarget "Jonah's Pace Calculator" */;
+			buildPhases = (
+				8CBEA33D240F5B52006E2F4A /* Sources */,
+				8CBEA33E240F5B52006E2F4A /* Frameworks */,
+				8CBEA33F240F5B52006E2F4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Jonah's Pace Calculator";
+			productName = "Jonah's Pace Calculator";
+			productReference = 8CBEA341240F5B52006E2F4A /* Jonah's Pace Calculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8CBEA356240F5B55006E2F4A /* Jonah's Pace CalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CBEA36E240F5B55006E2F4A /* Build configuration list for PBXNativeTarget "Jonah's Pace CalculatorTests" */;
+			buildPhases = (
+				8CBEA353240F5B55006E2F4A /* Sources */,
+				8CBEA354240F5B55006E2F4A /* Frameworks */,
+				8CBEA355240F5B55006E2F4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CBEA359240F5B55006E2F4A /* PBXTargetDependency */,
+			);
+			name = "Jonah's Pace CalculatorTests";
+			productName = "Jonah's Pace CalculatorTests";
+			productReference = 8CBEA357240F5B55006E2F4A /* Jonah's Pace CalculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8CBEA361240F5B55006E2F4A /* Jonah's Pace CalculatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CBEA371240F5B55006E2F4A /* Build configuration list for PBXNativeTarget "Jonah's Pace CalculatorUITests" */;
+			buildPhases = (
+				8CBEA35E240F5B55006E2F4A /* Sources */,
+				8CBEA35F240F5B55006E2F4A /* Frameworks */,
+				8CBEA360240F5B55006E2F4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CBEA364240F5B55006E2F4A /* PBXTargetDependency */,
+			);
+			name = "Jonah's Pace CalculatorUITests";
+			productName = "Jonah's Pace CalculatorUITests";
+			productReference = 8CBEA362240F5B55006E2F4A /* Jonah's Pace CalculatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8CBEA339240F5B52006E2F4A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Jonah Starling";
+				TargetAttributes = {
+					8CBEA340240F5B52006E2F4A = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					8CBEA356240F5B55006E2F4A = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8CBEA340240F5B52006E2F4A;
+					};
+					8CBEA361240F5B55006E2F4A = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8CBEA340240F5B52006E2F4A;
+					};
+				};
+			};
+			buildConfigurationList = 8CBEA33C240F5B52006E2F4A /* Build configuration list for PBXProject "Jonah's Pace Calculator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8CBEA338240F5B52006E2F4A;
+			productRefGroup = 8CBEA342240F5B52006E2F4A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8CBEA340240F5B52006E2F4A /* Jonah's Pace Calculator */,
+				8CBEA356240F5B55006E2F4A /* Jonah's Pace CalculatorTests */,
+				8CBEA361240F5B55006E2F4A /* Jonah's Pace CalculatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8CBEA33F240F5B52006E2F4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CBEA351240F5B55006E2F4A /* LaunchScreen.storyboard in Resources */,
+				8CBEA34E240F5B55006E2F4A /* Assets.xcassets in Resources */,
+				8CBEA34C240F5B52006E2F4A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CBEA355240F5B55006E2F4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CBEA360240F5B55006E2F4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8CBEA33D240F5B52006E2F4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CBEA349240F5B52006E2F4A /* ViewController.swift in Sources */,
+				8CBEA345240F5B52006E2F4A /* AppDelegate.swift in Sources */,
+				8CBEA347240F5B52006E2F4A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CBEA353240F5B55006E2F4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CBEA35C240F5B55006E2F4A /* Jonah_s_Pace_CalculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CBEA35E240F5B55006E2F4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CBEA367240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CBEA359240F5B55006E2F4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CBEA340240F5B52006E2F4A /* Jonah's Pace Calculator */;
+			targetProxy = 8CBEA358240F5B55006E2F4A /* PBXContainerItemProxy */;
+		};
+		8CBEA364240F5B55006E2F4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CBEA340240F5B52006E2F4A /* Jonah's Pace Calculator */;
+			targetProxy = 8CBEA363240F5B55006E2F4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CBEA34A240F5B52006E2F4A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CBEA34B240F5B52006E2F4A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8CBEA34F240F5B55006E2F4A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CBEA350240F5B55006E2F4A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8CBEA369240F5B55006E2F4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8CBEA36A240F5B55006E2F4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8CBEA36C240F5B55006E2F4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWJRY9T89T;
+				INFOPLIST_FILE = "Jonah's Pace Calculator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonahstarling.Jonah-s-Pace-Calculator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8CBEA36D240F5B55006E2F4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWJRY9T89T;
+				INFOPLIST_FILE = "Jonah's Pace Calculator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonahstarling.Jonah-s-Pace-Calculator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8CBEA36F240F5B55006E2F4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWJRY9T89T;
+				INFOPLIST_FILE = "Jonah's Pace CalculatorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonahstarling.Jonah-s-Pace-CalculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jonah's Pace Calculator.app/Jonah's Pace Calculator";
+			};
+			name = Debug;
+		};
+		8CBEA370240F5B55006E2F4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWJRY9T89T;
+				INFOPLIST_FILE = "Jonah's Pace CalculatorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonahstarling.Jonah-s-Pace-CalculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jonah's Pace Calculator.app/Jonah's Pace Calculator";
+			};
+			name = Release;
+		};
+		8CBEA372240F5B55006E2F4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWJRY9T89T;
+				INFOPLIST_FILE = "Jonah's Pace CalculatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonahstarling.Jonah-s-Pace-CalculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Jonah's Pace Calculator";
+			};
+			name = Debug;
+		};
+		8CBEA373240F5B55006E2F4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWJRY9T89T;
+				INFOPLIST_FILE = "Jonah's Pace CalculatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonahstarling.Jonah-s-Pace-CalculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Jonah's Pace Calculator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8CBEA33C240F5B52006E2F4A /* Build configuration list for PBXProject "Jonah's Pace Calculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CBEA369240F5B55006E2F4A /* Debug */,
+				8CBEA36A240F5B55006E2F4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CBEA36B240F5B55006E2F4A /* Build configuration list for PBXNativeTarget "Jonah's Pace Calculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CBEA36C240F5B55006E2F4A /* Debug */,
+				8CBEA36D240F5B55006E2F4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CBEA36E240F5B55006E2F4A /* Build configuration list for PBXNativeTarget "Jonah's Pace CalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CBEA36F240F5B55006E2F4A /* Debug */,
+				8CBEA370240F5B55006E2F4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CBEA371240F5B55006E2F4A /* Build configuration list for PBXNativeTarget "Jonah's Pace CalculatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CBEA372240F5B55006E2F4A /* Debug */,
+				8CBEA373240F5B55006E2F4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8CBEA339240F5B52006E2F4A /* Project object */;
+}
