@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C85EE94241420C800F47D20 /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C85EE93241420C800F47D20 /* Convert.swift */; };
+		8C85EE9624144BD400F47D20 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C85EE9524144BD400F47D20 /* HomeViewController.swift */; };
 		8CBEA345240F5B52006E2F4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA344240F5B52006E2F4A /* AppDelegate.swift */; };
 		8CBEA347240F5B52006E2F4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA346240F5B52006E2F4A /* SceneDelegate.swift */; };
 		8CBEA349240F5B52006E2F4A /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA348240F5B52006E2F4A /* LaunchViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		8C85EE93241420C800F47D20 /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
+		8C85EE9524144BD400F47D20 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8CBEA341240F5B52006E2F4A /* Jonah's Pace Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jonah's Pace Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBEA344240F5B52006E2F4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CBEA346240F5B52006E2F4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				8CBEA352240F5B55006E2F4A /* Info.plist */,
 				8CBEA3762412D2DC006E2F4A /* DistancesInMiles.swift */,
 				8C85EE93241420C800F47D20 /* Convert.swift */,
+				8C85EE9524144BD400F47D20 /* HomeViewController.swift */,
 			);
 			path = "Jonah's Pace Calculator";
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				8CBEA345240F5B52006E2F4A /* AppDelegate.swift in Sources */,
 				8CBEA347240F5B52006E2F4A /* SceneDelegate.swift in Sources */,
 				8CBEA3772412D2DC006E2F4A /* DistancesInMiles.swift in Sources */,
+				8C85EE9624144BD400F47D20 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

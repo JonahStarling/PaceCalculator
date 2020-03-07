@@ -38,7 +38,7 @@ class LaunchViewController: UIViewController {
     }
     
     func navigateToHomeViewController() {
-        // TODO
+        performSegue(withIdentifier: "launchToHomeSegue", sender: nil)
     }
 
 }
