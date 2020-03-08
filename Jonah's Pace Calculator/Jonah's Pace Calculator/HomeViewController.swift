@@ -12,6 +12,9 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var timeView: UIView!
+    @IBOutlet weak var distanceView: UIView!
+    @IBOutlet weak var paceView: UIView!
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     
@@ -56,14 +59,20 @@ class HomeViewController: UIViewController {
     
     func setViewsOffScreen() {
         logoView.center.x = 0 - logoView.frame.width / 2
+        timeView.center.x = view.frame.width + timeView.frame.width / 2
+        distanceView.center.x = 0 - distanceView.frame.width / 2
+        paceView.center.x = view.frame.width + paceView.frame.width / 2
         calculateButton.center.x = 0 - calculateButton.frame.width / 2
         resetButton.center.x = view.frame.width + resetButton.frame.width / 2
         view.layoutIfNeeded()
     }
     
     func animateInElements() {
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseOut], animations: {
             self.logoView.center.x = self.view.center.x
+            self.timeView.center.x = self.view.center.x
+            self.distanceView.center.x = self.view.center.x
+            self.paceView.center.x = self.view.center.x
             self.calculateButton.center.x = self.calculateButton.frame.width / 2
             self.resetButton.center.x = self.view.frame.width - self.resetButton.frame.width / 2
             self.view.layoutIfNeeded()

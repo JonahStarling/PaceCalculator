@@ -23,7 +23,7 @@ class LaunchViewController: UIViewController {
     }
     
     func animateAwayLogo() {
-        UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseIn], animations: {
             self.jonahLabel.center.x += self.view.bounds.width
             self.paceLabel.center.x -= self.view.bounds.width
             self.calculatorLabel.center.x += self.view.bounds.width
