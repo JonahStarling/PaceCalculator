@@ -25,11 +25,33 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var paceSecondField: UITextField!
     
     override func viewDidLoad() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        addToolbarsToTextFields()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         setViewsOffScreen()
         animateInElements()
+    }
+    
+    func addToolbarsToTextFields() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.doneButtonTapped))
+        
+        let items = [flexSpace, doneButton]
+        toolbar.items = items
+        toolbar.sizeToFit()
+        
+        timeHourField.inputAccessoryView = toolbar
+        timeMinuteField.inputAccessoryView = toolbar
+        timeSecondField.inputAccessoryView = toolbar
+
+        distanceField.inputAccessoryView = toolbar
+
+        paceMinuteField.inputAccessoryView = toolbar
+        paceSecondField.inputAccessoryView = toolbar
     }
     
     func setViewsOffScreen() {
@@ -48,6 +70,10 @@ class HomeViewController: UIViewController {
         }, completion: { _ in
             // TODO
         })
+    }
+    
+    @objc func doneButtonTapped() {
+        self.view.endEditing(true)
     }
     
 }
