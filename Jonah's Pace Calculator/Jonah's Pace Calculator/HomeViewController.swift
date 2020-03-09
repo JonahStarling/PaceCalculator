@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var timeView: UIView!
@@ -29,12 +29,41 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        addToolbarsToTextFields()
+        setupTextFields()
+        //NSAttributedString(string: "placeholder text", attributes: [NSForegroundColorAttributeName: UIColor.yellow])
     }
     
     override func viewDidAppear(_ animated: Bool) {
         setViewsOffScreen()
         animateInElements()
+    }
+    
+    func setupTextFields() {
+        assignDelegatesForTextFields()
+        addPlaceholdersToTextFields()
+        addToolbarsToTextFields()
+    }
+    
+    func assignDelegatesForTextFields() {
+        timeHourField.delegate = self
+        timeMinuteField.delegate = self
+        timeSecondField.delegate = self
+        
+        distanceField.delegate = self
+        
+        paceMinuteField.delegate = self
+        paceSecondField.delegate = self
+    }
+    
+    func addPlaceholdersToTextFields() {
+        timeHourField.attributedPlaceholder = NSAttributedString(string: "1", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        timeMinuteField.attributedPlaceholder = NSAttributedString(string: "59", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        timeSecondField.attributedPlaceholder = NSAttributedString(string: "40", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        
+        distanceField.attributedPlaceholder = NSAttributedString(string: "26.2", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        
+        paceMinuteField.attributedPlaceholder = NSAttributedString(string: "4", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        paceSecondField.attributedPlaceholder = NSAttributedString(string: "34", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
     }
     
     func addToolbarsToTextFields() {
@@ -55,6 +84,26 @@ class HomeViewController: UIViewController {
 
         paceMinuteField.inputAccessoryView = toolbar
         paceSecondField.inputAccessoryView = toolbar
+    }
+    
+    func getMaxCharactersInTextField(textField: UITextField) -> Int {
+        var maxCharacters: Int = 5
+        if textField == timeMinuteField {
+            maxCharacters = 2
+        } else if textField == timeHourField || textField == paceMinuteField {
+            maxCharacters = 3
+        }
+        return maxCharacters
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxCharacters = getMaxCharactersInTextField(textField: textField)
+        let currentCharacterCount = textField.text?.count ?? 0
+        if range.length + range.location > currentCharacterCount {
+            return false
+        }
+        let newLength = currentCharacterCount + string.count - range.length
+        return newLength <= maxCharacters
     }
     
     func setViewsOffScreen() {
