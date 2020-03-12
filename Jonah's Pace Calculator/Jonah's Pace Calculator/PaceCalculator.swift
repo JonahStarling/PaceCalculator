@@ -14,10 +14,14 @@ class PaceCalculator {
     var timeMinute: Double?
     var timeSecond: Double?
     
-    var distance: Double?
+    var distance: Distance?
     
     var paceMinute: Double?
     var paceSecond: Double?
+    var paceUnit: Distance? = Distances.oneMile
+    
+    let secondsInMinute: Double = 60
+    let minutesInHour: Double = 60
     
     func timePresent() -> Bool {
         return timeHour != nil && timeMinute != nil && timeSecond != nil
@@ -31,8 +35,26 @@ class PaceCalculator {
         return paceMinute != nil && paceSecond != nil
     }
     
+    func convertPaceTimeToMileTimeInSeconds() -> Double? {
+        var convertedPaceSeconds: Double? = nil
+        let totalPaceSeconds = ((paceMinute ?? 0) * 60) + (paceSecond ?? 0)
+        if let unitInMiles = paceUnit?.lengthInMiles {
+            convertedPaceSeconds = (totalPaceSeconds / unitInMiles)
+        }
+        return convertedPaceSeconds
+    }
+    
     func calculateTime() -> Bool {
-        return false
+        let convertedPaceTimeInSeconds = convertPaceTimeToMileTimeInSeconds()
+        guard convertedPaceTimeInSeconds != nil && convertedPaceTimeInSeconds != 0.0 && distance != nil else { return false }
+        let timeInSeconds = convertedPaceTimeInSeconds! * distance!.lengthInMiles
+        var timeLeft = timeInSeconds
+        self.timeHour = (timeLeft - (timeLeft.truncatingRemainder(dividingBy: secondsInMinute * minutesInHour))) / (secondsInMinute * minutesInHour)
+        timeLeft = timeLeft.truncatingRemainder(dividingBy: secondsInMinute * minutesInHour)
+        self.timeMinute = (timeLeft - (timeLeft.truncatingRemainder(dividingBy: secondsInMinute))) / secondsInMinute
+        timeLeft = timeLeft.truncatingRemainder(dividingBy: secondsInMinute)
+        self.timeSecond = timeLeft
+        return true
     }
     
     func calculateDistance() -> Bool {

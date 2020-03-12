@@ -33,6 +33,11 @@ class Distance {
     let name: String
     let lengthInMiles: Double
     
+    init(lengthInMiles: Double) {
+        self.name = ""
+        self.lengthInMiles = lengthInMiles
+    }
+    
     init(name: String, lengthInMiles: Double) {
         self.name = name
         self.lengthInMiles = lengthInMiles

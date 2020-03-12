@@ -27,10 +27,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var paceMinuteField: UITextField!
     @IBOutlet weak var paceSecondField: UITextField!
     
+    var activeTextField: UITextField?
+    
+    let paceCalculator = PaceCalculator()
+    
     override func viewDidLoad() {
+        // TODO: This broke everything for some reason
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         setupTextFields()
-        //NSAttributedString(string: "placeholder text", attributes: [NSForegroundColorAttributeName: UIColor.yellow])
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,7 +74,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.doneButtonTapped))
+        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.doneEditing))
         
         let items = [flexSpace, doneButton]
         toolbar.items = items
@@ -96,6 +100,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         return maxCharacters
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxCharacters = getMaxCharactersInTextField(textField: textField)
         let currentCharacterCount = textField.text?.count ?? 0
@@ -104,6 +112,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         }
         let newLength = currentCharacterCount + string.count - range.length
         return newLength <= maxCharacters
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updatePaceCalculatorData()
+        if paceCalculator.calculateMissing() {
+            updateWithResults()
+        }
     }
     
     func setViewsOffScreen() {
@@ -130,8 +145,33 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    @objc func doneButtonTapped() {
-        self.view.endEditing(true)
+    @objc func doneEditing() {
+        activeTextField?.resignFirstResponder()
+        activeTextField = nil
+    }
+    
+    func updatePaceCalculatorData() {
+        self.paceCalculator.timeHour = Double(self.timeHourField.text ?? "")
+        self.paceCalculator.timeMinute = Double(self.timeMinuteField.text ?? "")
+        self.paceCalculator.timeSecond = Double(self.timeSecondField.text ?? "")
+
+        if let lengthInMiles = Double(self.distanceField.text ?? "") {
+            self.paceCalculator.distance = Distance(lengthInMiles: lengthInMiles)
+        }
+        
+        self.paceCalculator.paceMinute = Double(self.paceMinuteField.text ?? "")
+        self.paceCalculator.paceSecond = Double(self.paceSecondField.text ?? "")
+    }
+    
+    func updateWithResults() {
+        self.timeHourField.text = String(format: "%.0f", self.paceCalculator.timeHour ?? "")
+        self.timeMinuteField.text = String(format: "%.0f", self.paceCalculator.timeMinute ?? "")
+        self.timeSecondField.text = String(format: "%.2f", self.paceCalculator.timeSecond ?? "")
+        
+        self.distanceField.text = String(format: "%.2f", self.paceCalculator.distance?.lengthInMiles ?? "")
+        
+        self.paceMinuteField.text = String(format: "%.0f", self.paceCalculator.paceMinute ?? "")
+        self.paceSecondField.text = String(format: "%.2f", self.paceCalculator.paceSecond ?? "")
     }
     
 }
