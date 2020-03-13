@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C205B3C241B11F700055806 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C205B3B241B11F700055806 /* TimeHelper.swift */; };
 		8C85EE94241420C800F47D20 /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C85EE93241420C800F47D20 /* Convert.swift */; };
 		8C85EE9624144BD400F47D20 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C85EE9524144BD400F47D20 /* HomeViewController.swift */; };
 		8C85EE982415E30400F47D20 /* PaceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C85EE972415E30400F47D20 /* PaceCalculator.swift */; };
@@ -18,7 +19,7 @@
 		8CBEA351240F5B55006E2F4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBEA34F240F5B55006E2F4A /* LaunchScreen.storyboard */; };
 		8CBEA35C240F5B55006E2F4A /* Jonah_s_Pace_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA35B240F5B55006E2F4A /* Jonah_s_Pace_CalculatorTests.swift */; };
 		8CBEA367240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA366240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift */; };
-		8CBEA3772412D2DC006E2F4A /* DistancesInMiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA3762412D2DC006E2F4A /* DistancesInMiles.swift */; };
+		8CBEA3772412D2DC006E2F4A /* Distances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBEA3762412D2DC006E2F4A /* Distances.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C205B3B241B11F700055806 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		8C85EE93241420C800F47D20 /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
 		8C85EE9524144BD400F47D20 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8C85EE972415E30400F47D20 /* PaceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculator.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		8CBEA362240F5B55006E2F4A /* Jonah's Pace CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jonah's Pace CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBEA366240F5B55006E2F4A /* Jonah_s_Pace_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jonah_s_Pace_CalculatorUITests.swift; sourceTree = "<group>"; };
 		8CBEA368240F5B55006E2F4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CBEA3762412D2DC006E2F4A /* DistancesInMiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancesInMiles.swift; sourceTree = "<group>"; };
+		8CBEA3762412D2DC006E2F4A /* Distances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distances.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C205B36241B10CD00055806 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8CBEA348240F5B52006E2F4A /* LaunchViewController.swift */,
+				8C85EE9524144BD400F47D20 /* HomeViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		8C205B38241B10EE00055806 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8C85EE93241420C800F47D20 /* Convert.swift */,
+				8CBEA3762412D2DC006E2F4A /* Distances.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8C205B39241B110F00055806 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8C85EE972415E30400F47D20 /* PaceCalculator.swift */,
+				8C205B3B241B11F700055806 /* TimeHelper.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		8C205B3A241B112300055806 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8CBEA34A240F5B52006E2F4A /* Main.storyboard */,
+				8CBEA34F240F5B55006E2F4A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		8CBEA338240F5B52006E2F4A = {
 			isa = PBXGroup;
 			children = (
@@ -107,17 +145,14 @@
 		8CBEA343240F5B52006E2F4A /* Jonah's Pace Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				8C205B3A241B112300055806 /* Storyboards */,
+				8C205B39241B110F00055806 /* Utility */,
+				8C205B38241B10EE00055806 /* Data */,
+				8C205B36241B10CD00055806 /* UI */,
 				8CBEA344240F5B52006E2F4A /* AppDelegate.swift */,
 				8CBEA346240F5B52006E2F4A /* SceneDelegate.swift */,
-				8CBEA348240F5B52006E2F4A /* LaunchViewController.swift */,
-				8CBEA34A240F5B52006E2F4A /* Main.storyboard */,
 				8CBEA34D240F5B55006E2F4A /* Assets.xcassets */,
-				8CBEA34F240F5B55006E2F4A /* LaunchScreen.storyboard */,
 				8CBEA352240F5B55006E2F4A /* Info.plist */,
-				8CBEA3762412D2DC006E2F4A /* DistancesInMiles.swift */,
-				8C85EE93241420C800F47D20 /* Convert.swift */,
-				8C85EE9524144BD400F47D20 /* HomeViewController.swift */,
-				8C85EE972415E30400F47D20 /* PaceCalculator.swift */,
 			);
 			path = "Jonah's Pace Calculator";
 			sourceTree = "<group>";
@@ -273,10 +308,11 @@
 			files = (
 				8C85EE982415E30400F47D20 /* PaceCalculator.swift in Sources */,
 				8CBEA349240F5B52006E2F4A /* LaunchViewController.swift in Sources */,
+				8C205B3C241B11F700055806 /* TimeHelper.swift in Sources */,
 				8C85EE94241420C800F47D20 /* Convert.swift in Sources */,
 				8CBEA345240F5B52006E2F4A /* AppDelegate.swift in Sources */,
 				8CBEA347240F5B52006E2F4A /* SceneDelegate.swift in Sources */,
-				8CBEA3772412D2DC006E2F4A /* DistancesInMiles.swift in Sources */,
+				8CBEA3772412D2DC006E2F4A /* Distances.swift in Sources */,
 				8C85EE9624144BD400F47D20 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

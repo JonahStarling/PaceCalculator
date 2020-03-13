@@ -165,13 +165,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     func updateWithResults() {
         self.timeHourField.text = String(format: "%.0f", self.paceCalculator.timeHour ?? "")
-        self.timeMinuteField.text = String(format: "%.0f", self.paceCalculator.timeMinute ?? "")
-        self.timeSecondField.text = String(format: "%.2f", self.paceCalculator.timeSecond ?? "")
+        self.timeMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.timeMinute)
+        self.timeSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.timeSecond)
         
         self.distanceField.text = String(format: "%.2f", self.paceCalculator.distance?.lengthInMiles ?? "")
         
-        self.paceMinuteField.text = String(format: "%.0f", self.paceCalculator.paceMinute ?? "")
-        self.paceSecondField.text = String(format: "%.2f", self.paceCalculator.paceSecond ?? "")
+        self.paceMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.paceMinute)
+        self.paceSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.paceSecond)
     }
     
 }
