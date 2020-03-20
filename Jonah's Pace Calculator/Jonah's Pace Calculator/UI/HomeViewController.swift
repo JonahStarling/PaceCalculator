@@ -168,7 +168,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         self.timeMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.timeMinute)
         self.timeSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.timeSecond)
         
-        self.distanceField.text = String(format: "%.2f", self.paceCalculator.distance?.lengthInMiles ?? "")
+        self.distanceField.text = DistanceHelper.convertAndFormat(distanceInMiles: self.paceCalculator.distance, conversionDistance: Distances.oneKilometer)
         
         self.paceMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.paceMinute)
         self.paceSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.paceSecond)

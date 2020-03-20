@@ -24,7 +24,7 @@ class PaceCalculator {
     let minutesInHour: Double = 60
     
     func timePresent() -> Bool {
-        return timeHour != nil && timeMinute != nil && timeSecond != nil
+        return timeHour != nil || timeMinute != nil || timeSecond != nil
     }
     
     func distancePresent() -> Bool {
