@@ -113,4 +113,16 @@ class PaceCalculator {
             return false
         }
     }
+    
+    func clear() {
+        timeHour = nil
+        timeMinute = nil
+        timeSecond = nil
+        
+        distance = nil
+        
+        paceMinute = nil
+        paceSecond = nil
+        paceUnit = Distances.oneMile
+    }
 }

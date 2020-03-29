@@ -392,9 +392,12 @@
                                     <constraint firstAttribute="height" constant="60" id="4dt-qq-o7H"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <state key="normal" title="CALCULATE SPLITS">
+                                <state key="normal" title="CALCULATE">
                                     <color key="titleColor" red="1" green="0.87058823529999996" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="calculateTapped:" destination="anU-89-a2V" eventType="touchUpInside" id="2rb-08-nHt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaR-5f-w6A">
                                 <rect key="frame" x="100" y="782" width="314" height="60"/>
@@ -406,6 +409,9 @@
                                 <state key="normal" title="RESET">
                                     <color key="titleColor" red="1" green="0.87058823529999996" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetData:" destination="anU-89-a2V" eventType="touchUpInside" id="C8e-04-8YK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.87058823529999996" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>

@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var distanceView: UIView!
     @IBOutlet weak var paceView: UIView!
+    
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     
@@ -90,12 +91,30 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         paceSecondField.inputAccessoryView = toolbar
     }
     
+    @IBAction func calculateTapped(_ sender: Any) {
+        updatePaceCalculatorData()
+        if paceCalculator.calculateMissing() {
+            updateWithResults()
+        }
+    }
+    
+    @IBAction func resetData(_ sender: Any) {
+        paceCalculator.clear()
+        
+        timeHourField.text = ""
+        timeMinuteField.text = ""
+        timeSecondField.text = ""
+        
+        distanceField.text = ""
+        
+        paceMinuteField.text = ""
+        paceSecondField.text = ""
+    }
+    
     func getMaxCharactersInTextField(textField: UITextField) -> Int {
         var maxCharacters: Int = 5
-        if textField == timeMinuteField {
+        if textField == timeMinuteField || textField == timeHourField || textField == paceMinuteField {
             maxCharacters = 2
-        } else if textField == timeHourField || textField == paceMinuteField {
-            maxCharacters = 3
         }
         return maxCharacters
     }
@@ -116,9 +135,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updatePaceCalculatorData()
-        if paceCalculator.calculateMissing() {
-            updateWithResults()
-        }
     }
     
     func setViewsOffScreen() {
@@ -140,8 +156,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             self.calculateButton.center.x = self.calculateButton.frame.width / 2
             self.resetButton.center.x = self.view.frame.width - self.resetButton.frame.width / 2
             self.view.layoutIfNeeded()
-        }, completion: { _ in
-            // TODO
         })
     }
     
