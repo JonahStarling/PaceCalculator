@@ -15,10 +15,11 @@ class PaceCalculator {
     var timeSecond: Double?
     
     var distance: Distance?
+    var distanceUnit: Distance = Distances.oneMile
     
     var paceMinute: Double?
     var paceSecond: Double?
-    var paceUnit: Distance? = Distances.oneMile
+    var paceUnit: Distance = Distances.oneMile
     
     let secondsInMinute: Double = 60
     let minutesInHour: Double = 60
@@ -39,16 +40,18 @@ class PaceCalculator {
     }
     
     func pacePresent() -> Bool {
-        return paceMinute != nil && paceSecond != nil
+        return paceMinute != nil || paceSecond != nil
     }
     
     func convertPaceTimeToMileTimeInSeconds() -> Double? {
         var convertedPaceSeconds: Double? = nil
         let totalPaceSeconds = ((paceMinute ?? 0) * 60) + (paceSecond ?? 0)
-        if let unitInMiles = paceUnit?.lengthInMiles {
-            convertedPaceSeconds = (totalPaceSeconds / unitInMiles)
-        }
+        convertedPaceSeconds = (totalPaceSeconds * paceUnit.lengthInMiles)
         return convertedPaceSeconds
+    }
+    
+    func getPaceInSeconds() -> Double? {
+        return ((paceMinute ?? 0) * 60) + (paceSecond ?? 0)
     }
     
     func getTimeInSeconds() -> Double? {
@@ -67,12 +70,27 @@ class PaceCalculator {
     // Returns whether or not the calculation was successful
     func calculateTime() -> Bool {
         // Check if pace data is valid
-        let convertedPaceTimeInSeconds = convertPaceTimeToMileTimeInSeconds()
-        guard convertedPaceTimeInSeconds != nil && convertedPaceTimeInSeconds != 0.0 else { return false }
+        var paceInSeconds = 0.0
+        if distanceUnit.name == Distances.oneMile.name {
+            paceInSeconds = convertPaceTimeToMileTimeInSeconds() ?? 0.0
+        } else {
+            paceInSeconds = getPaceInSeconds() ?? 0.0
+        }
+        guard paceInSeconds != 0.0 else { return false }
         // Check is distance data is valid
         guard distance != nil else { return false }
         // If we reach this point then all data needed should be valid
-        let timeInSeconds = convertedPaceTimeInSeconds! * distance!.lengthInMiles
+        var distanceValue = 0.0
+        if distanceUnit.name == Distances.oneMile.name {
+            distanceValue = (distance!.lengthInMiles / distanceUnit.lengthInMiles)
+        } else if distanceUnit.name == paceUnit.name {
+            distanceValue = distance!.lengthInMiles * Convert.mileToKilometer
+        } else {
+            distanceValue = distance!.lengthInMiles
+        }
+        let timeInSeconds = paceInSeconds * distanceValue
+        
+        // Divy out the seconds
         var timeLeft = timeInSeconds
         self.timeHour = (timeLeft - (timeLeft.truncatingRemainder(dividingBy: secondsInMinute * minutesInHour))) / (secondsInMinute * minutesInHour)
         timeLeft = timeLeft.truncatingRemainder(dividingBy: secondsInMinute * minutesInHour)
@@ -81,17 +99,20 @@ class PaceCalculator {
         return true
     }
     
-    // TODO: This function may not be fully functional
-    // Ex. Will this work if the distance we are wanting is not miles, but kilometers?
     func calculateDistance() -> Bool {
         // Check if pace data is valid
-        let convertedPaceTimeInSeconds = convertPaceTimeToMileTimeInSeconds()
-        guard convertedPaceTimeInSeconds != nil && convertedPaceTimeInSeconds != 0.0 else { return false }
+        var paceInSeconds = 0.0
+        if paceUnit.name == distanceUnit.name || paceUnit.name == Distances.oneKilometer.name {
+            paceInSeconds = convertPaceTimeToMileTimeInSeconds() ?? 0.0
+        } else {
+            paceInSeconds = getPaceInSeconds() ?? 0.0
+        }
+        guard paceInSeconds != 0.0 else { return false }
         // Check if time data is valid
         let timeInSeconds = getTimeInSeconds()
         guard timeInSeconds != nil && timeInSeconds != 0.0 else { return false }
         // If we reach this point then all data needed should be valid
-        self.distance = Distance(lengthInMiles: timeInSeconds! / convertedPaceTimeInSeconds!)
+        self.distance = Distance(lengthInMiles: timeInSeconds! / paceInSeconds)
         return true
     }
     
@@ -101,29 +122,43 @@ class PaceCalculator {
         guard timeInSeconds != nil && timeInSeconds != 0.0 else { return false }
         // Check is distance data is valid
         guard distance != nil else { return false }
-        // TODO: This is currently set up to only work for miles
-        // Ex. What if we want pace per kilometer?
-        let paceSeconds = timeInSeconds! / distance!.lengthInMiles
+        let paceSeconds = timeInSeconds! / (distance!.lengthInMiles * paceUnit.lengthInMiles)
         self.paceMinute = (paceSeconds - (paceSeconds.truncatingRemainder(dividingBy: secondsInMinute))) / secondsInMinute
         self.paceSecond = paceSeconds.truncatingRemainder(dividingBy: secondsInMinute)
         return true
     }
     
     func calculateMissing() -> ValueConverted {
-        if distancePresent() && pacePresent() {
+        if distancePresent() && pacePresent() && !timePresent() {
             if calculateTime() {
                 return ValueConverted.Time
             }
-        } else if timePresent() && pacePresent()  {
+        } else if timePresent() && pacePresent() && !distancePresent() {
             if calculateDistance() {
                 return ValueConverted.Distance
             }
-        } else if timePresent() && distancePresent() {
+        } else if timePresent() && distancePresent() && !pacePresent() {
             if calculatePace() {
                 return ValueConverted.Pace
             }
         }
         return ValueConverted.Error
+    }
+    
+    func switchDistanceUnit() {
+        if self.distanceUnit.name == Distances.oneMile.name {
+            self.distanceUnit = Distances.oneKilometer
+        } else {
+            self.distanceUnit = Distances.oneMile
+        }
+    }
+    
+    func switchPaceUnit() {
+        if self.paceUnit.name == Distances.oneMile.name {
+            self.paceUnit = Distances.oneKilometer
+        } else {
+            self.paceUnit = Distances.oneMile
+        }
     }
     
     func clear() {

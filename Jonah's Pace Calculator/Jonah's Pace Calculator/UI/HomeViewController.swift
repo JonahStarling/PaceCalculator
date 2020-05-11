@@ -16,6 +16,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var distanceView: UIView!
     @IBOutlet weak var paceView: UIView!
     
+    @IBOutlet weak var distanceUnit: UILabel!
+    @IBOutlet weak var paceUnit: UILabel!
+    
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     
@@ -33,14 +36,24 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     let paceCalculator = PaceCalculator()
     
     override func viewDidLoad() {
-        // TODO: This broke everything for some reason
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         setupTextFields()
+        setupTapRecognizers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         setViewsOffScreen()
         animateInElements()
+    }
+    
+    func setupTapRecognizers() {
+        let distanceUnitTap = UITapGestureRecognizer(target: self, action: #selector(self.distanceUnitTapped(_:)))
+        distanceUnit.isUserInteractionEnabled = true
+        distanceUnit.addGestureRecognizer(distanceUnitTap)
+        
+        let paceUnitTap = UITapGestureRecognizer(target: self, action: #selector(self.paceUnitTapped(_:)))
+        paceUnit.isUserInteractionEnabled = true
+        paceUnit.addGestureRecognizer(paceUnitTap)
     }
     
     func setupTextFields() {
@@ -89,6 +102,23 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 
         paceMinuteField.inputAccessoryView = toolbar
         paceSecondField.inputAccessoryView = toolbar
+    }
+    
+    @objc func distanceUnitTapped(_ sender: UITapGestureRecognizer) {
+        paceCalculator.switchDistanceUnit()
+        distanceUnit.text = paceCalculator.distanceUnit.name
+        if paceCalculator.distancePresent() {
+            populateDistanceField()
+        }
+    }
+    
+    @objc func paceUnitTapped(_ sender: UITapGestureRecognizer) {
+        paceCalculator.switchPaceUnit()
+        paceUnit.text = paceCalculator.paceUnit.name
+        if paceCalculator.pacePresent() && paceCalculator.calculatePace() {
+            populatePaceFields()
+        }
+        
     }
     
     @IBAction func calculateTapped(_ sender: Any) {
@@ -168,8 +198,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         self.paceCalculator.timeMinute = Double(self.timeMinuteField.text ?? "")
         self.paceCalculator.timeSecond = Double(self.timeSecondField.text ?? "")
 
-        if let lengthInMiles = Double(self.distanceField.text ?? "") {
-            self.paceCalculator.distance = Distance(lengthInMiles: lengthInMiles)
+        if var distanceLength = Double(self.distanceField.text ?? "") {
+            if paceCalculator.distanceUnit.name == Distances.oneKilometer.name {
+                distanceLength = distanceLength * Convert.kilometerToMile
+            }
+            self.paceCalculator.distance = Distance(lengthInMiles: distanceLength)
+        } else {
+            self.paceCalculator.distance = nil
         }
         
         self.paceCalculator.paceMinute = Double(self.paceMinuteField.text ?? "")
@@ -178,15 +213,52 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     func updateWithResults(valueConverted: PaceCalculator.ValueConverted) {
         if valueConverted == PaceCalculator.ValueConverted.Time {
-            self.timeHourField.text = String(format: "%.0f", self.paceCalculator.timeHour ?? "")
-            self.timeMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.timeMinute)
-            self.timeSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.timeSecond)
+            populateTimeFields()
         } else if valueConverted == PaceCalculator.ValueConverted.Distance {
-            self.distanceField.text = DistanceHelper.convertAndFormat(distanceInMiles: self.paceCalculator.distance, conversionDistance: Distances.oneKilometer)
+            populateDistanceField()
         } else if valueConverted == PaceCalculator.ValueConverted.Pace {
-            self.paceMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.paceMinute)
-            self.paceSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.paceSecond)
+            populatePaceFields()
         }
     }
     
+    func populateTimeFields() {
+        let formattedSeconds = TimeHelper.formatSecond(seconds: self.paceCalculator.timeSecond)
+        // This is needed to prevent second values like 59.99999 from being rounded to 60
+        // Then we would look all dumb like saying 2:60 instead of 3:00. Can't have that.
+        if formattedSeconds == "60.00" {
+            self.timeSecondField.text = "00"
+            self.paceCalculator.timeSecond = 0
+            self.paceCalculator.timeMinute = (self.paceCalculator.timeMinute ?? 0) + 1
+        } else {
+            self.timeSecondField.text = formattedSeconds
+        }
+        
+        let formattedMinutes = TimeHelper.formatMinute(minutes: self.paceCalculator.timeMinute)
+        if formattedMinutes == "60" {
+            self.timeMinuteField.text = "00"
+            self.paceCalculator.timeMinute = 0
+            self.paceCalculator.timeHour = (self.paceCalculator.timeHour ?? 0) + 1
+        } else {
+            self.timeMinuteField.text = formattedMinutes
+        }
+        
+        self.timeHourField.text = String(format: "%.0f", self.paceCalculator.timeHour ?? "")
+    }
+
+    func populateDistanceField() {
+        self.distanceField.text = DistanceHelper.convertAndFormat(distanceInMiles: self.paceCalculator.distance, conversionDistance: self.paceCalculator.distanceUnit)
+    }
+    
+    func populatePaceFields() {
+        let formattedSeconds = TimeHelper.formatSecond(seconds: self.paceCalculator.paceSecond)
+        if formattedSeconds == "60.00" {
+            self.paceSecondField.text = "00"
+            self.paceCalculator.paceSecond = 0
+            self.paceCalculator.paceMinute = (self.paceCalculator.paceMinute ?? 0) + 1
+        } else {
+            self.paceSecondField.text = formattedSeconds
+        }
+        self.paceMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.paceMinute)
+        
+    }
 }
