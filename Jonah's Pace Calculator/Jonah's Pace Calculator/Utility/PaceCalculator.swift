@@ -23,6 +23,13 @@ class PaceCalculator {
     let secondsInMinute: Double = 60
     let minutesInHour: Double = 60
     
+    enum ValueConverted {
+        case Time
+        case Distance
+        case Pace
+        case Error
+    }
+    
     func timePresent() -> Bool {
         return timeHour != nil || timeMinute != nil || timeSecond != nil
     }
@@ -102,16 +109,21 @@ class PaceCalculator {
         return true
     }
     
-    func calculateMissing() -> Bool {
+    func calculateMissing() -> ValueConverted {
         if distancePresent() && pacePresent() {
-            return calculateTime()
+            if calculateTime() {
+                return ValueConverted.Time
+            }
         } else if timePresent() && pacePresent()  {
-            return calculateDistance()
+            if calculateDistance() {
+                return ValueConverted.Distance
+            }
         } else if timePresent() && distancePresent() {
-            return calculatePace()
-        } else {
-            return false
+            if calculatePace() {
+                return ValueConverted.Pace
+            }
         }
+        return ValueConverted.Error
     }
     
     func clear() {

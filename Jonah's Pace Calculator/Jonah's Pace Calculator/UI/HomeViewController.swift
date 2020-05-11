@@ -61,14 +61,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addPlaceholdersToTextFields() {
-        timeHourField.attributedPlaceholder = NSAttributedString(string: "1", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
-        timeMinuteField.attributedPlaceholder = NSAttributedString(string: "59", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
-        timeSecondField.attributedPlaceholder = NSAttributedString(string: "40", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        timeHourField.attributedPlaceholder = NSAttributedString(string: "0", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        timeMinuteField.attributedPlaceholder = NSAttributedString(string: "00", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        timeSecondField.attributedPlaceholder = NSAttributedString(string: "00", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
         
-        distanceField.attributedPlaceholder = NSAttributedString(string: "26.2", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        distanceField.attributedPlaceholder = NSAttributedString(string: "0", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
         
-        paceMinuteField.attributedPlaceholder = NSAttributedString(string: "4", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
-        paceSecondField.attributedPlaceholder = NSAttributedString(string: "34", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        paceMinuteField.attributedPlaceholder = NSAttributedString(string: "0", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
+        paceSecondField.attributedPlaceholder = NSAttributedString(string: "00", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.25)])
     }
     
     func addToolbarsToTextFields() {
@@ -93,9 +93,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func calculateTapped(_ sender: Any) {
         updatePaceCalculatorData()
-        if paceCalculator.calculateMissing() {
-            updateWithResults()
-        }
+        let valueConverted = paceCalculator.calculateMissing()
+        updateWithResults(valueConverted: valueConverted)
     }
     
     @IBAction func resetData(_ sender: Any) {
@@ -177,15 +176,17 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         self.paceCalculator.paceSecond = Double(self.paceSecondField.text ?? "")
     }
     
-    func updateWithResults() {
-        self.timeHourField.text = String(format: "%.0f", self.paceCalculator.timeHour ?? "")
-        self.timeMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.timeMinute)
-        self.timeSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.timeSecond)
-        
-        self.distanceField.text = DistanceHelper.convertAndFormat(distanceInMiles: self.paceCalculator.distance, conversionDistance: Distances.oneKilometer)
-        
-        self.paceMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.paceMinute)
-        self.paceSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.paceSecond)
+    func updateWithResults(valueConverted: PaceCalculator.ValueConverted) {
+        if valueConverted == PaceCalculator.ValueConverted.Time {
+            self.timeHourField.text = String(format: "%.0f", self.paceCalculator.timeHour ?? "")
+            self.timeMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.timeMinute)
+            self.timeSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.timeSecond)
+        } else if valueConverted == PaceCalculator.ValueConverted.Distance {
+            self.distanceField.text = DistanceHelper.convertAndFormat(distanceInMiles: self.paceCalculator.distance, conversionDistance: Distances.oneKilometer)
+        } else if valueConverted == PaceCalculator.ValueConverted.Pace {
+            self.paceMinuteField.text = TimeHelper.formatMinute(minutes: self.paceCalculator.paceMinute)
+            self.paceSecondField.text = TimeHelper.formatSecond(seconds: self.paceCalculator.paceSecond)
+        }
     }
     
 }
