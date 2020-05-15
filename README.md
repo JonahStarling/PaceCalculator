@@ -10,10 +10,10 @@ My favorite pace calculator was on a website called Cool Runnings. It wasn't eve
 The app is in the repo. That's about it.
 
 ## Stages of development
-### MVP (In Progress)
+### MVP (Released)
 - Be able to calculate pace, distance, or time
 
-### V1.0 (Not Started)
+### V1.0 (In Progress)
 - Distances with different units
 - Paces in different distances and units
 
